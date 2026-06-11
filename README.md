@@ -1,6 +1,6 @@
 # WhatsApp API Backend (Django)
 
-An extensible Django-based REST API that powers a WhatsApp automation bot, featuring a dynamic plugin architecture and OpenAI GPT integration.
+This repository contains a production-ready, modular Django API built for WhatsApp messaging automation. Originally designed for GPT, the system has been refactored to seamlessly leverage **Google Gemini AI**, utilizing a decoupled architecture that isolates AI operations from core webhook handling.
 
 <img src="./img/index.png" alt="index.png/"> <br>
 <img src="./img/admin.png" alt="admin.png/"> <br>
@@ -11,8 +11,13 @@ An extensible Django-based REST API that powers a WhatsApp automation bot, featu
 * **Role-Based Access Control:** Built-in validation for Admin-only commands and user blacklisting.
 * **Media Handling:** Process incoming images, videos, audio, and documents.
 
-## Architecture & Workflow
-This API acts as the orchestration layer. It expects webhooks from a WhatsApp client wrapper, processes the business logic or plugins, and dispatches responses back.
+## Architecture & Core Components
+
+The codebase follows a strict separation of concerns to allow easy maintenance and scaling:
+
+* **`api/whatsapp_api_handle.py`**: Manages incoming and outgoing WhatsApp webhooks, user contexts, and payload routing.
+* **`api/ai_service.py`**: Dedicated wrapper for the Google Gemini API. Handles prompt optimization, system instructions, and token safety limits independently of the webhooks.
+* **`api/plugins/`**: Directory for extending bot capabilities (e.g., custom automation, external database interactions) without modifying the main workflow.
 
 ## Setup & Installation
 
@@ -30,13 +35,22 @@ This API acts as the orchestration layer. It expects webhooks from a WhatsApp cl
 
 ```
 
-3. **Environment Variables:**
+3. **Configuration:**
 Create a `.env` file in the root directory:
 
+Create a `.env` file in the root directory and configure your credentials securely:
+
 ```env
-   DJANGO_KEY=your_secret_key
-   OPENAI_API_KEY=your_openai_key
-   WHATSAPP_CLIENT_URL=your_whatsapp_node_client_url
+# Django settings
+SECRET_KEY=your_django_secret_key
+DEBUG=True
+
+# WhatsApp API configuration
+WHATSAPP_TOKEN=your_whatsapp_access_token
+VERIFY_TOKEN=your_webhook_verification_token
+
+# AI Service Configuration
+GEMINI_API_KEY=your_google_gemini_api_key
 
 ```
 
