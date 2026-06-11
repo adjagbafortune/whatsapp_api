@@ -23,7 +23,7 @@ oauthlib==3.2.2
 openai==1.30.5
 phonenumbers==8.13.39
 proto-plus==1.23.0
-protobuf==4.25.3
+protobuf==5.29.6
 psycopg2-binary==2.9.9
 pyasn1==0.6.3
 pyasn1_modules==0.4.0
