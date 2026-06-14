@@ -80,4 +80,4 @@ def handle_function(message):
 
 ## 🛡️ License
 
-This project is licensed under the [License MIT](LICENSE). 
+This project is licensed under the [License MIT](LICENSE).
