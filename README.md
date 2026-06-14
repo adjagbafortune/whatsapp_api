@@ -11,7 +11,7 @@ This repository contains a production-ready, modular Django API built for WhatsA
 * **Role-Based Access Control:** Built-in validation for Admin-only commands and user blacklisting.
 * **Media Handling:** Process incoming images, videos, audio, and documents.
 
-## Architecture & Core Components
+## Architecture and Core Components
 
 The codebase follows a strict separation of concerns to allow easy maintenance and scaling:
 
@@ -19,7 +19,7 @@ The codebase follows a strict separation of concerns to allow easy maintenance a
 * **`api/ai_service.py`**: Dedicated wrapper for the Google Gemini API. Handles prompt optimization, system instructions, and token safety limits independently of the webhooks.
 * **`api/plugins/`**: Directory for extending bot capabilities (e.g., custom automation, external database interactions) without modifying the main workflow.
 
-## Setup & Installation
+## Setup and Installation
 
 1. **Clone & Navigate:**
 ```bash
